@@ -22,6 +22,11 @@ body.menu-open { overflow: hidden; }
 .gs-aside-inner { min-height: calc(100vh - 113px); min-height: calc(100svh - 113px); }
 .site-hero { height: auto !important; min-height: 100vh !important; min-height: 100svh !important; display: flex; flex-direction: column; justify-content: flex-end; padding: 176px 72px 88px; }
 .site-hero > .hero-content { position: relative !important; inset: auto !important; width: 100%; }
+@media (min-width: 1200px) {
+  /* Match the centered 1440px canvas and its wide-screen 24px gutters.
+     Laptop widths retain the hero's existing 72px section padding. */
+  .homepage-hero > .hero-content { max-width: calc(1440px - 2 * 24px); margin-inline: auto; }
+}
 .partner-card:not(:has(.partner-aside)) { grid-template-columns: auto 1fr !important; }
 .media-recognition { padding: 80px 72px !important; background: #1C1611; border-block: 1px solid rgba(180,131,79,.22); }
 .media-feature { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); background: #17120F; border: 1px solid rgba(180,131,79,.25); }
