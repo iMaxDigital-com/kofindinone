@@ -162,6 +162,8 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-XXXXXXXXXX');</script>
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init', '000000000000000');fbq('track', 'PageView');</script>
+<link rel="stylesheet" href="./responsive.css">
+<script src="./navigation.js" defer></script>
 </head>
 <body>
 <x-dc>
@@ -169,7 +171,7 @@
 <div style="width: 1440px; margin: 0 auto; background: #17120F; color: #F2EBE0; font-family: 'Inter Tight', 'Helvetica Neue', Arial, sans-serif; position: relative; overflow: hidden;">
 
   <!-- ===== NAV ===== -->
-  <nav aria-label="Primary" style="position: absolute; top: 0; left: 0; right: 0; z-index: 30; padding: 32px 72px; display: flex; align-items: center; justify-content: space-between;">
+  <nav class="site-nav" aria-label="Primary" style="position: absolute; top: 0; left: 0; right: 0; z-index: 30; padding: 32px 72px; display: flex; align-items: center; justify-content: space-between;">
     <a href="index.html" class="nav-logo" style="display: flex; align-items: center; gap: 16px;">
       <img class="nav-badge" src="images/kn1-badge.webp" alt="" width="37" height="48" style="height: 48px; width: auto; display: block; flex-shrink: 0;">
       <span style="display: flex; flex-direction: column; line-height: 1;">
@@ -177,7 +179,7 @@
         <span class="nav-tagline" style="font-size: 9px; letter-spacing: 0.32em; text-transform: uppercase; color: #C79862; margin-top: 6px;">Unified Wellness</span>
       </span>
     </a>
-    <div style="display: flex; gap: 38px; align-items: center; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(242,235,224,0.85); font-weight: 500;">
+    <div class="desktop-links" style="display: flex; gap: 38px; align-items: center; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(242,235,224,0.85); font-weight: 500;">
       <a href="corporate.html">Corporate</a>
       <a href="residential.html">Residential</a>
       <a href="ecosystem.html" style="color: #F2EBE0; border-bottom: 1px solid #B4834F; padding-bottom: 4px;">Ecosystem</a>
@@ -187,13 +189,13 @@
   </nav>
 
   <!-- ===== HERO ===== -->
-  <div style="position: relative; height: 800px; width: 100%; overflow: hidden;">
+  <div class="site-hero" style="position: relative; height: 800px; width: 100%; overflow: hidden;">
     <video autoplay muted loop playsinline preload="metadata" poster="images/ChanCL-56.webp" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none;" id="heroVideo">
       <source src="videos/hero-bg.mp4" type="video/mp4">
     </video>
     <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(23,18,15,0.72) 0%, rgba(23,18,15,0.22) 38%, rgba(23,18,15,0.94) 100%);"></div>
 
-    <div style="position: absolute; left: 72px; right: 72px; bottom: 82px; z-index: 10;">
+    <div class="hero-content" style="position: absolute; left: 72px; right: 72px; bottom: 82px; z-index: 10;">
       <div style="font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase; color: #C79862; margin-bottom: 24px; font-weight: 500; animation: fadeUp 0.9s ease both;">The ecosystem</div>
       <h1 class="fr" style="font-size: 86px; line-height: 0.98; font-weight: 400; letter-spacing: -0.022em; max-width: 1120px; animation: fadeUp 1s ease 0.1s both;">You tell your story once. Everyone here already knows it.</h1>
       <div style="font-size: 20px; line-height: 1.62; font-weight: 300; color: rgba(242,235,224,0.85); max-width: 620px; margin-top: 28px; animation: fadeUp 1s ease 0.2s both;">Four specialists, one plan, one conversation about you happening behind the scenes &mdash; instead of four professionals who&rsquo;ve never met.</div>
@@ -304,18 +306,14 @@
         </div>
       </div>
       <div class="partner-card" style="background: #1C1611; border: 1px solid rgba(180,131,79,0.22); border-top: none; padding: 52px 60px; display: grid; grid-template-columns: auto 1fr auto; gap: 44px; align-items: center;">
-        <div style="width: 104px; height: 104px; border-radius: 50%; flex-shrink: 0; background: repeating-linear-gradient(135deg, #2f251d 0 6px, #271e17 6px 12px); border: 1px solid rgba(180,131,79,0.3); position: relative;">
-          <span style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'SF Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.04em; color: rgba(242,235,224,0.45); text-align: center;">headshot</span>
-        </div>
+        <div class="partner-logo"><img src="images/MyFitFoodsLogo.svg" alt="My Fit Foods logo"></div>
         <div style="display: flex; flex-direction: column; gap: 10px;">
           <div class="fr" style="font-size: 28px; font-weight: 500; letter-spacing: -0.005em; color: #F2EBE0;">My Fit Foods</div>
           <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #C79862; font-weight: 500;">Nutrition Partner</div>
           <div style="font-size: 15.5px; line-height: 1.7; color: rgba(242,235,224,0.72); max-width: 620px; margin-top: 4px;">My Fit Foods is our nutrition partner, offering chef-prepared meals built around real macro targets, high protein, calories dialed to your goals, so eating well takes zero planning. No grocery runs, no meal prep, no counting, just food that tastes good and moves you toward your goals, ready when you are.</div>
         </div>
         <div class="partner-aside" style="display: flex; flex-direction: column; gap: 12px; align-items: flex-end;">
-          <div style="background: #F2EBE0; border-radius: 10px; padding: 14px 18px; display: flex; align-items: center; justify-content: center; min-width: 190px; height: 80px; box-sizing: border-box;">
-            <img src="images/MyFitFoodsLogo.svg" alt="My Fit Foods logo" style="max-width: 100%; max-height: 100%;">
-          </div>
+
           <a href="get-started.html" class="link-accent" style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600;">Start with nutrition &rarr;</a>
         </div>
       </div>
@@ -388,9 +386,7 @@
           <div style="font-size: 15.5px; line-height: 1.7; color: rgba(242,235,224,0.72); max-width: 620px; margin-top: 4px;">Doctor Syra brings a Doctorate in Chiropractic and a Master&rsquo;s in Neuroscience to her practice, Arise Chiropractic and Vitality, graduating top of her class at Parker University. She believes the body works as a whole, that pain rarely traces to a single source, so she works with you to find the real root cause and build a personalized plan, with particular strength serving the fitness community and specialized care for prenatal and postnatal recovery. Whatever your goal, she helps you get there by treating what&rsquo;s actually driving the problem.</div>
         </div>
         <div class="partner-aside" style="display: flex; flex-direction: column; gap: 12px; align-items: flex-end;">
-          <div style="width: 104px; height: 104px; border-radius: 14px; overflow: hidden;">
-            <img src="images/AriseChiropracticVitalityLogo.png" alt="Arise Chiropractic and Vitality logo" style="width: 100%; height: 100%; object-fit: cover;">
-          </div>
+
           <a href="get-started.html" class="link-accent" style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600;">Start with recovery &rarr;</a>
         </div>
       </div>
@@ -422,25 +418,17 @@
           <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #C79862; font-weight: 500;">Lab Work &amp; Optimization</div>
           <div style="font-size: 15.5px; line-height: 1.7; color: rgba(242,235,224,0.72); max-width: 620px; margin-top: 4px;">Doctor Shane Ali is a board-certified emergency medicine physician who spent years treating preventable disease, and built Nirvanix to get ahead of it instead. Through comprehensive lab work and bloodwork, IV nutrition therapy, and customized optimization plans, he shows you exactly what&rsquo;s happening inside your body, then gives you a clear, personalized path to peak performance. Because true health isn&rsquo;t the absence of disease, it&rsquo;s the energy, clarity, and confidence to operate at your full capacity, in the boardroom and everywhere else.</div>
         </div>
-        <div class="partner-aside" style="display: flex; flex-direction: column; gap: 12px; align-items: flex-end;">
-          <div style="background: #F2EBE0; border-radius: 10px; padding: 14px 18px; display: flex; align-items: center; justify-content: center; min-width: 190px; height: 80px; box-sizing: border-box;">
-            <img src="images/NirvanixHealthLogo.png" alt="Nirvanix Health logo" style="max-width: 100%; max-height: 100%;">
-          </div>
-        </div>
+
       </div>
       <div class="partner-card" style="background: #1C1611; border: 1px solid rgba(180,131,79,0.22); border-top: none; padding: 52px 60px; display: grid; grid-template-columns: auto 1fr auto; gap: 44px; align-items: center;">
-        <div style="width: 104px; height: 104px; border-radius: 50%; flex-shrink: 0; background: repeating-linear-gradient(135deg, #2f251d 0 6px, #271e17 6px 12px); border: 1px solid rgba(180,131,79,0.3); position: relative;">
-          <span style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'SF Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.04em; color: rgba(242,235,224,0.45); text-align: center;">headshot</span>
-        </div>
+        <div class="partner-logo"><img src="images/SilohAppLogo.png" alt="Siloh app logo"></div>
         <div style="display: flex; flex-direction: column; gap: 10px;">
           <div class="fr" style="font-size: 28px; font-weight: 500; letter-spacing: -0.005em; color: #F2EBE0;">Siloh</div>
           <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #C79862; font-weight: 500;">Training &amp; Nutrition, Connected</div>
           <div style="font-size: 15.5px; line-height: 1.7; color: rgba(242,235,224,0.72); max-width: 620px; margin-top: 4px;">Siloh is the first platform that treats your nutrition and training as one connected system, instead of two apps that never talk to each other. Your meals adapt to your training days and your rest days, so your fuel always matches the work you&rsquo;re putting in. As part of the Konfide In One ecosystem, you get founding member access, in early, at the ground floor of where your plan lives and adapts.</div>
         </div>
         <div class="partner-aside" style="display: flex; flex-direction: column; gap: 12px; align-items: flex-end;">
-          <div style="width: 104px; height: 104px; border-radius: 18px; overflow: hidden;">
-            <img src="images/SilohAppLogo.png" alt="Siloh app logo" style="width: 100%; height: 100%; object-fit: cover;">
-          </div>
+
           <a href="get-started.html" class="link-accent" style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600;">Start with measurement &rarr;</a>
         </div>
       </div>
@@ -535,7 +523,7 @@
     </div>
 
     <div style="display: flex; flex-direction: column; margin-top: 128px; padding-top: 40px; border-top: 1px solid rgba(242,235,224,0.08); font-size: 12px; letter-spacing: 0.04em; color: rgba(242,235,224,0.7); gap: 32px; padding-bottom: 56px;">
-      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px;">
+      <div class="site-footer-row" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px;">
         <div>
           <div style="display: flex; align-items: center; gap: 24px; margin-bottom: 12px;">
             <span class="fr" style="font-size: 22px; letter-spacing: 0.02em; color: rgba(242,235,224,0.8);">Konfide In One</span>
@@ -551,12 +539,12 @@
           </div>
         </div>
         <div style="display: flex; flex-direction: column; gap: 8px; align-items: flex-end;">
-          <div style="display: flex; gap: 32px; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 500;">
+          <div class="site-footer-links" style="display: flex; gap: 32px; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 500;">
             <a href="corporate.html">Corporate</a><a href="residential.html">Residential</a><a href="ecosystem.html">Ecosystem</a><a href="mission.html">Mission</a><a href="get-started.html">Get Started</a>
           </div>
         </div>
       </div>
-      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding-top: 20px; border-top: 1px solid rgba(242,235,224,0.06);">
+      <div class="site-footer-row" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding-top: 20px; border-top: 1px solid rgba(242,235,224,0.06);">
         <div>&copy; 2026 Konfide In One LLC &middot; Austin, TX &middot; <span style="font-size: 11px; color: rgba(242,235,224,0.6);">Est. 2026</span></div>
       </div>
     </div>

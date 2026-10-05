@@ -156,6 +156,8 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-XXXXXXXXXX');</script>
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init', '000000000000000');fbq('track', 'PageView');</script>
+<link rel="stylesheet" href="./responsive.css">
+<script src="./navigation.js" defer></script>
 </head>
 <body>
 <x-dc>
@@ -163,7 +165,7 @@
 <div style="width: 1440px; margin: 0 auto; background: #17120F; color: #F2EBE0; font-family: 'Inter Tight', 'Helvetica Neue', Arial, sans-serif; position: relative; overflow: hidden;">
 
   <!-- ===== NAV ===== -->
-  <nav aria-label="Primary" style="position: absolute; top: 0; left: 0; right: 0; z-index: 20; padding: 32px 72px; display: flex; align-items: center; justify-content: space-between;">
+  <nav class="site-nav" aria-label="Primary" style="position: absolute; top: 0; left: 0; right: 0; z-index: 20; padding: 32px 72px; display: flex; align-items: center; justify-content: space-between;">
     <a href="index.html" class="nav-logo" style="display: flex; align-items: center; gap: 16px;">
       <img class="nav-badge" src="images/kn1-badge.webp" alt="" width="37" height="48" style="height: 48px; width: auto; display: block; flex-shrink: 0;">
       <span style="display: flex; flex-direction: column; line-height: 1;">
@@ -171,7 +173,7 @@
         <span class="nav-tagline" style="font-size: 9px; letter-spacing: 0.32em; text-transform: uppercase; color: #C79862; margin-top: 6px;">Unified Wellness</span>
       </span>
     </a>
-    <div style="display: flex; gap: 38px; align-items: center; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(242,235,224,0.85); font-weight: 500;">
+    <div class="desktop-links" style="display: flex; gap: 38px; align-items: center; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(242,235,224,0.85); font-weight: 500;">
       <a href="corporate.html" style="color: #F2EBE0; border-bottom: 1px solid #B4834F; padding-bottom: 4px;">Corporate</a>
       <a href="residential.html">Residential</a>
       <a href="ecosystem.html">Ecosystem</a>
@@ -181,13 +183,13 @@
   </nav>
 
   <!-- ===== HERO ===== -->
-  <div style="position: relative; height: 800px; width: 100%; overflow: hidden;">
+  <div class="site-hero" style="position: relative; height: 800px; width: 100%; overflow: hidden;">
     <video autoplay muted loop playsinline preload="metadata" poster="images/ChanCL-4.webp" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none;" id="heroVideo">
       <source src="videos/hero-bg.mp4" type="video/mp4">
     </video>
     <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(23,18,15,0.72) 0%, rgba(23,18,15,0.22) 38%, rgba(23,18,15,0.94) 100%);"></div>
 
-    <div style="position: absolute; left: 72px; right: 72px; bottom: 82px; z-index: 10;">
+    <div class="hero-content" style="position: absolute; left: 72px; right: 72px; bottom: 82px; z-index: 10;">
       <div style="font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase; color: #C79862; margin-bottom: 24px; font-weight: 500; animation: fadeUp 0.9s ease both;">For companies</div>
       <h1 class="fr" style="font-size: 94px; line-height: 0.97; font-weight: 400; letter-spacing: -0.022em; max-width: 1050px; animation: fadeUp 1s ease 0.1s both;">Your people don&rsquo;t need another benefit. They need someone who shows up.</h1>
       <div style="font-size: 20px; line-height: 1.62; font-weight: 300; color: rgba(242,235,224,0.85); max-width: 620px; margin-top: 28px; animation: fadeUp 1s ease 0.2s both;">We put a real coach inside the gym you already built &mdash; and your team stops needing willpower to get there.</div>
@@ -462,7 +464,7 @@
     </div>
 
     <div style="display: flex; flex-direction: column; margin-top: 128px; padding-top: 40px; border-top: 1px solid rgba(242,235,224,0.08); font-size: 12px; letter-spacing: 0.04em; color: rgba(242,235,224,0.7); gap: 32px; padding-bottom: 56px;">
-      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px;">
+      <div class="site-footer-row" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px;">
         <div>
           <div style="display: flex; align-items: center; gap: 24px; margin-bottom: 12px;">
             <span class="fr" style="font-size: 22px; letter-spacing: 0.02em; color: rgba(242,235,224,0.8);">Konfide In One</span>
@@ -478,12 +480,12 @@
           </div>
         </div>
         <div style="display: flex; flex-direction: column; gap: 8px; align-items: flex-end;">
-          <div style="display: flex; gap: 32px; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 500;">
+          <div class="site-footer-links" style="display: flex; gap: 32px; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 500;">
             <a href="corporate.html">Corporate</a><a href="residential.html">Residential</a><a href="ecosystem.html">Ecosystem</a><a href="mission.html">Mission</a><a href="get-started.html">Get Started</a>
           </div>
         </div>
       </div>
-      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding-top: 20px; border-top: 1px solid rgba(242,235,224,0.06);">
+      <div class="site-footer-row" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding-top: 20px; border-top: 1px solid rgba(242,235,224,0.06);">
         <div>&copy; 2026 Konfide In One LLC &middot; Austin, TX &middot; <span style="font-size: 11px; color: rgba(242,235,224,0.6);">Est. 2026</span></div>
       </div>
     </div>

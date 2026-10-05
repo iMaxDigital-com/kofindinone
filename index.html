@@ -164,6 +164,8 @@
 <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-XXXXXXXXXX');</script>
 <!-- Facebook Pixel placeholder - replace with your Pixel ID -->
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init', '000000000000000');fbq('track', 'PageView');</script>
+<link rel="stylesheet" href="./responsive.css">
+<script src="./navigation.js" defer></script>
 </head>
 <body>
 <x-dc>
@@ -171,7 +173,7 @@
 <div style="width: 1440px; margin: 0 auto; background: #17120F; color: #F2EBE0; font-family: 'Inter Tight', 'Helvetica Neue', Arial, sans-serif; position: relative; overflow: hidden;">
 
   <!-- ===== NAV ===== -->
-  <nav aria-label="Primary" style="position: absolute; top: 0; left: 0; right: 0; z-index: 20; padding: 32px 72px; display: flex; align-items: center; justify-content: space-between;">
+  <nav class="site-nav" aria-label="Primary" style="position: absolute; top: 0; left: 0; right: 0; z-index: 20; padding: 32px 72px; display: flex; align-items: center; justify-content: space-between;">
     <a href="index.html" class="nav-logo" style="display: flex; align-items: center; gap: 16px;">
       <img class="nav-badge" src="images/kn1-badge.webp" alt="" width="37" height="48" style="height: 48px; width: auto; display: block; flex-shrink: 0;">
       <span style="display: flex; flex-direction: column; line-height: 1;">
@@ -179,7 +181,7 @@
         <span class="nav-tagline" style="font-size: 9px; letter-spacing: 0.32em; text-transform: uppercase; color: #C79862; margin-top: 6px;">Unified Wellness</span>
       </span>
     </a>
-    <div style="display: flex; gap: 38px; align-items: center; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(242,235,224,0.85); font-weight: 500;">
+    <div class="desktop-links" style="display: flex; gap: 38px; align-items: center; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(242,235,224,0.85); font-weight: 500;">
       <a href="corporate.html">Corporate</a>
       <a href="residential.html">Residential</a>
       <a href="ecosystem.html">Ecosystem</a>
@@ -189,13 +191,13 @@
   </nav>
 
   <!-- ===== HERO ===== -->
-  <div style="position: relative; height: 880px; width: 100%; overflow: hidden;">
+  <div class="site-hero" style="position: relative; height: 880px; width: 100%; overflow: hidden;">
     <video autoplay muted loop playsinline preload="metadata" poster="images/ChanCL-56.webp" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none;" id="heroVideo">
       <source src="videos/hero-bg.mp4" type="video/mp4">
     </video>
     <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(23,18,15,0.72) 0%, rgba(23,18,15,0.22) 38%, rgba(23,18,15,0.94) 100%);"></div>
 
-    <div style="position: absolute; left: 72px; right: 72px; bottom: 88px; z-index: 10;">
+    <div class="hero-content" style="position: absolute; left: 72px; right: 72px; bottom: 88px; z-index: 10;">
       <div style="font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase; color: #C79862; margin-bottom: 24px; font-weight: 500; animation: fadeUp 0.9s ease both;">Confidence in your health. Confidence in yourself.</div>
       <h1 class="fr" style="font-size: 104px; line-height: 0.95; font-weight: 400; letter-spacing: -0.025em; max-width: 1060px; animation: fadeUp 1s ease 0.1s both;">You handle everything else. Let us handle you.</h1>
       <div style="font-size: 20px; line-height: 1.62; font-weight: 300; color: rgba(242,235,224,0.85); max-width: 620px; margin-top: 28px; animation: fadeUp 1s ease 0.2s both;">Training, food, recovery, and real measurement &mdash; run by one team that knows your name, in the building where you already live and work.</div>
@@ -204,16 +206,6 @@
         <a href="residential.html" class="cta-ghost" style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; padding: 18px 41px;">For properties &amp; residents</a>
         <div style="font-size: 14px; color: rgba(242,235,224,0.7); font-weight: 300; margin-left: 10px;">Or just <a href="get-started.html" class="link-accent" style="border-bottom: 1px solid rgba(199,152,98,0.7);">talk to Chandler</a> &mdash; 15 minutes, no pitch.</div>
       </div>
-      <!-- ===== AS SEEN IN — Men's Fitness =====
-           Hold unpublished until the Men's Fitness article (by Swathi Nalamalapu) is actually live.
-           To publish: uncomment this block. Once the article URL exists, wrap the img in
-           <a href="ARTICLE_URL" target="_blank" rel="noopener"> so the badge links out. -->
-      <!--
-      <div style="margin-top: 36px; display: flex; align-items: center; gap: 14px; animation: fadeUp 1s ease 0.4s both;">
-        <span style="font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(242,235,224,0.5); font-weight: 500;">As Seen In</span>
-        <img src="images/Men's Fitness feature.webp" alt="Men's Fitness" style="height: 26px; width: auto; opacity: 0.9;">
-      </div>
-      -->
     </div>
   </div>
 
@@ -380,6 +372,20 @@
     </div>
   </section>
 
+  <section class="media-recognition" aria-label="Media recognition">
+    <div class="media-feature">
+      <img class="media-portrait" src="images/Chandler%20Img%201.webp" alt="Chandler Thomas, founder of Konfide In One, in the gym" width="828" height="552" loading="lazy">
+      <div class="media-content">
+        <span class="media-label">As seen on</span>
+        <a class="media-brand" href="https://www.mensfitness.com/news/wellness-is-coming-to-you-now-not-the-other-way-around" target="_blank" rel="noopener noreferrer" aria-label="Chandler in Men's Fitness (opens in a new tab)">
+          <img src="images/mensfitness%20logo.svg" alt="Men's Fitness" width="280" height="64" loading="lazy">
+        </a>
+        <p class="fr media-description">See Chandler featured in Men&rsquo;s Fitness.</p>
+        <a class="cta-solid media-cta" href="https://www.mensfitness.com/news/wellness-is-coming-to-you-now-not-the-other-way-around" target="_blank" rel="noopener noreferrer">Read the Featured Article &rarr;</a>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== TESTIMONIAL — C-suite executive (real, locked) ===== -->
   <section style="background: #F2EBE0; color: #211A15; padding: 132px 72px;">
     <div style="display: grid; grid-template-columns: 420px 1fr; gap: 84px; align-items: center; max-width: 1180px; margin: 0 auto;">
@@ -449,7 +455,7 @@
     </div>
 
     <div style="display: flex; flex-direction: column; margin-top: 128px; padding-top: 40px; border-top: 1px solid rgba(242,235,224,0.08); font-size: 12px; letter-spacing: 0.04em; color: rgba(242,235,224,0.7); gap: 32px; padding-bottom: 56px;">
-      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px;">
+      <div class="site-footer-row" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px;">
         <div>
           <div style="display: flex; align-items: center; gap: 24px; margin-bottom: 12px;">
             <span class="fr" style="font-size: 22px; letter-spacing: 0.02em; color: rgba(242,235,224,0.8);">Konfide In One</span>
@@ -465,12 +471,12 @@
           </div>
         </div>
         <div style="display: flex; flex-direction: column; gap: 8px; align-items: flex-end;">
-          <div style="display: flex; gap: 32px; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 500;">
+          <div class="site-footer-links" style="display: flex; gap: 32px; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 500;">
             <a href="corporate.html">Corporate</a><a href="residential.html">Residential</a><a href="ecosystem.html">Ecosystem</a><a href="mission.html">Mission</a><a href="get-started.html">Get Started</a>
           </div>
         </div>
       </div>
-      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding-top: 20px; border-top: 1px solid rgba(242,235,224,0.06);">
+      <div class="site-footer-row" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding-top: 20px; border-top: 1px solid rgba(242,235,224,0.06);">
         <div>&copy; 2026 Konfide In One LLC &middot; Austin, TX &middot; <span style="font-size: 11px; color: rgba(242,235,224,0.6);">Est. 2026</span></div>
       </div>
     </div>

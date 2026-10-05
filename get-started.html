@@ -162,6 +162,8 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-XXXXXXXXXX');</script>
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init', '000000000000000');fbq('track', 'PageView');</script>
+<link rel="stylesheet" href="./responsive.css">
+<script src="./navigation.js" defer></script>
 </head>
 <body>
 <x-dc>
@@ -169,7 +171,7 @@
 <div style="width: 1440px; margin: 0 auto; background: #17120F; color: #F2EBE0; font-family: 'Inter Tight', 'Helvetica Neue', Arial, sans-serif; position: relative;">
 
   <!-- ===== NAV ===== -->
-  <nav aria-label="Primary" style="padding: 32px 72px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(242,235,224,0.08);">
+  <nav class="site-nav" aria-label="Primary" style="padding: 32px 72px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(242,235,224,0.08);">
     <a href="index.html" class="nav-logo" style="display: flex; align-items: center; gap: 16px;">
       <img class="nav-badge" src="images/kn1-badge.webp" alt="" width="37" height="48" style="height: 48px; width: auto; display: block; flex-shrink: 0;">
       <span style="display: flex; flex-direction: column; line-height: 1;">
@@ -177,7 +179,7 @@
         <span class="nav-tagline" style="font-size: 9px; letter-spacing: 0.32em; text-transform: uppercase; color: #C79862; margin-top: 6px;">Unified Wellness</span>
       </span>
     </a>
-    <div style="display: flex; gap: 38px; align-items: center; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(242,235,224,0.85); font-weight: 500;">
+    <div class="desktop-links" style="display: flex; gap: 38px; align-items: center; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(242,235,224,0.85); font-weight: 500;">
       <a href="corporate.html">Corporate</a>
       <a href="residential.html">Residential</a>
       <a href="ecosystem.html">Ecosystem</a>
@@ -187,7 +189,7 @@
   </nav>
 
   <!-- ===== SPLIT: Chandler's invitation | the form ===== -->
-  <div style="display: grid; grid-template-columns: 560px 1fr; align-items: stretch;">
+  <div class="gs-layout" style="display: grid; grid-template-columns: 560px 1fr; align-items: stretch;">
 
     <!-- LEFT: the invitation, sticky alongside the form -->
     <div class="gs-aside" style="background: #1C1611; border-right: 1px solid rgba(180,131,79,0.2);">
@@ -371,7 +373,7 @@
        No closing CTA block here: this page already is the CTA. -->
   <div role="contentinfo" style="background: #14100D; border-top: 1px solid rgba(242,235,224,0.08); padding: 0 72px;">
     <div style="display: flex; flex-direction: column; margin-top: 0; padding-top: 56px; font-size: 12px; letter-spacing: 0.04em; color: rgba(242,235,224,0.7); gap: 32px; padding-bottom: 56px;">
-      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px;">
+      <div class="site-footer-row" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px;">
         <div>
           <div style="display: flex; align-items: center; gap: 24px; margin-bottom: 12px;">
             <span class="fr" style="font-size: 22px; letter-spacing: 0.02em; color: rgba(242,235,224,0.8);">Konfide In One</span>
@@ -387,12 +389,12 @@
           </div>
         </div>
         <div style="display: flex; flex-direction: column; gap: 8px; align-items: flex-end;">
-          <div style="display: flex; gap: 32px; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 500;">
+          <div class="site-footer-links" style="display: flex; gap: 32px; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 500;">
             <a href="corporate.html">Corporate</a><a href="residential.html">Residential</a><a href="ecosystem.html">Ecosystem</a><a href="mission.html">Mission</a><a href="get-started.html">Get Started</a>
           </div>
         </div>
       </div>
-      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding-top: 20px; border-top: 1px solid rgba(242,235,224,0.06);">
+      <div class="site-footer-row" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding-top: 20px; border-top: 1px solid rgba(242,235,224,0.06);">
         <div>&copy; 2026 Konfide In One LLC &middot; Austin, TX &middot; <span style="font-size: 11px; color: rgba(242,235,224,0.6);">Est. 2026</span></div>
       </div>
     </div>

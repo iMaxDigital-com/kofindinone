@@ -31,7 +31,7 @@
       var s = heroes[j].getAttribute('style') || '';
       if (HERO_PX.test(s)) { firstHero = heroes[j]; break; }
     }
-    if (firstHero) firstHero.style.height = h + 'px';
+    if (firstHero && window.innerWidth >= 1200) firstHero.style.height = h + 'px';
   }
   var rafT = null;
   window.addEventListener('resize', function () {
