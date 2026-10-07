@@ -35,7 +35,6 @@
     a { color: inherit; text-decoration: none; }
     h1, h2, h3, h4 { margin: 0; padding: 0; font-weight: inherit; }
     figure { margin: 0; }
-    fieldset { margin: 0; padding: 0; border: 0; min-width: 0; }
     /* the UA sheet's display:none for [hidden] loses to an inline display, and
        several blocks here carry one — make hidden actually hide */
     [hidden] { display: none !important; }
@@ -53,19 +52,10 @@
     .link-accent { color: #C79862; }
     .link-accent:hover, .link-accent:focus-visible { color: #E0B98A; }
 
-    /* ===== form ===== */
-    input, textarea, select, button { font-family: 'Inter Tight', 'Helvetica Neue', Arial, sans-serif; }
-    input::placeholder, textarea::placeholder { color: rgba(242,235,224,0.42); }
-    .fld {
-      width: 100%; background: transparent; border: 1px solid rgba(242,235,224,0.28);
-      padding: 16px 18px; font-size: 15px; color: #F2EBE0; transition: border-color 0.2s ease;
-    }
-    select.fld { background: #17120F; }
-    .fld:hover { border-color: rgba(242,235,224,0.45); }
-    .fld:focus { outline: none; border-color: #B4834F; box-shadow: 0 0 0 1px #B4834F; }
-    /* a field the browser has judged invalid only after the user tried to submit */
-    form.was-submitted .fld:invalid { border-color: #D98A6A; }
-    .lbl { display: block; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(242,235,224,0.62); margin-bottom: 10px; }
+    /* ===== audience selector & embedded forms ===== */
+    button { font-family: 'Inter Tight', 'Helvetica Neue', Arial, sans-serif; }
+    .ghl-form-panel { width: 100%; min-width: 0; }
+    .ghl-form-panel iframe { display: block; max-width: 100%; }
     .aud-btn {
       display: block; width: 100%; text-align: left; font: inherit; cursor: pointer;
       padding: 24px 22px; color: rgba(242,235,224,0.85);
@@ -75,8 +65,7 @@
     .aud-btn:hover { border-color: rgba(180,131,79,0.7); }
     .aud-btn:focus-visible { outline: 2px solid #C79862; outline-offset: 3px; }
     .aud-btn.is-active { background: #B4834F; border-color: #B4834F; color: #17120F; }
-    /* Only ever *hides* — inline display styles would beat a class that tried to
-       reveal, and without JS every group stays visible so nothing is lost. */
+    /* Audience notes and embedded forms share the same visibility switch. */
     .aud-hidden { display: none !important; }
 
     /* ===== responsive: preserved from the previous build, extended for the new type scale ===== */
@@ -146,18 +135,8 @@
       .gs-portrait { height: 200px !important; }
       .section-head { flex-wrap: wrap !important; align-items: flex-start !important; gap: 20px !important; }
       .section-head > * { max-width: 100% !important; }
-      .gs-submit-row { flex-direction: column !important; align-items: stretch !important; gap: 18px !important; }
     }
 </style>
-<noscript><style>
-    /* Without JS the audience buttons can't do anything, so show every group's
-       fields at once and label them in the legend instead. */
-    .aud-switcher { display: none !important; }
-    .aud-group { display: block !important; }
-    .aud-group-legend { display: block !important; }
-    .gs-submit-row { display: none !important; }
-    .gs-noscript { display: block !important; }
-</style></noscript>
 <script src="./support.js" defer></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-XXXXXXXXXX');</script>
@@ -221,16 +200,6 @@
     <!-- RIGHT: the form -->
     <div style="padding: 76px 96px 110px;">
 
-      <!-- confirmation, revealed in place of the form after a successful submit -->
-      <div id="gsThanks" hidden style="border: 1px solid rgba(180,131,79,0.4); background: #1C1611; padding: 84px 64px; display: flex; flex-direction: column; gap: 18px; animation: fadeUp 0.5s ease both;">
-        <div style="font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: #C79862; font-weight: 500;">Got it</div>
-        <h2 class="fr" style="font-size: 40px; line-height: 1.1; font-weight: 400; letter-spacing: -0.02em; color: #F2EBE0;">Thanks &mdash; I&rsquo;ll read this myself.</h2>
-        <div style="font-size: 17px; line-height: 1.75; color: rgba(242,235,224,0.75); max-width: 460px;">You&rsquo;ll hear back within 24 hours, from me, with a couple of times that could work. Nothing automated in between.</div>
-        <div class="fr" style="font-size: 20px; font-style: italic; color: rgba(242,235,224,0.6); margin-top: 8px;">&mdash; Chandler</div>
-      </div>
-
-      <form id="gsForm" method="post" action="/api/send" novalidate>
-
         <div class="aud-switcher">
           <div style="font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(242,235,224,0.6); margin-bottom: 18px; font-weight: 500;">First &mdash; which one are you?</div>
           <div role="group" aria-label="Which one are you?" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 20px;">
@@ -253,94 +222,72 @@
           <div class="aud-note aud-individual aud-hidden" style="font-size: 15px; line-height: 1.7; font-weight: 300; color: rgba(242,235,224,0.68); border-left: 2px solid rgba(180,131,79,0.5); padding-left: 16px; margin-bottom: 48px;">Fifteen minutes on the phone, then a functional movement screening if it feels like a fit. No program to buy before either of those.</div>
         </div>
 
-        <!-- the button row sets this so the server knows which branch was filled -->
-        <input type="hidden" name="audience" id="gsAudience" value="corporate">
-
-        <div style="border-top: 1px solid rgba(242,235,224,0.08); padding-top: 44px;">
-          <div style="font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(242,235,224,0.6); margin-bottom: 28px; font-weight: 500;">Then &mdash; how do I reach you?</div>
-
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-            <div>
-              <label class="lbl" for="gsName">Name</label>
-              <input class="fld" type="text" id="gsName" name="name" autocomplete="name" placeholder="Full name" required>
-            </div>
-            <div>
-              <label class="lbl" for="gsEmail">Email</label>
-              <input class="fld" type="email" id="gsEmail" name="email" autocomplete="email" placeholder="you@example.com" required>
-            </div>
-          </div>
-
-          <div style="margin-top: 20px;">
-            <label class="lbl" for="gsPhone">Phone</label>
-            <input class="fld" type="tel" id="gsPhone" name="phone" autocomplete="tel" placeholder="(000) 000-0000" required>
-          </div>
-
-          <!-- CORPORATE -->
-          <fieldset class="aud-group aud-corporate">
-            <legend class="aud-group-legend" hidden style="font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: #C79862; font-weight: 500; padding: 28px 0 4px;">If you&rsquo;re a company</legend>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
-              <div>
-                <label class="lbl" for="gsCompany">Company</label>
-                <input class="fld" type="text" id="gsCompany" name="company" autocomplete="organization" placeholder="Company name">
-              </div>
-              <div>
-                <label class="lbl" for="gsRole">Your role</label>
-                <input class="fld" type="text" id="gsRole" name="role" autocomplete="organization-title" placeholder="Job title">
-              </div>
-            </div>
-            <div style="margin-top: 20px;">
-              <label class="lbl" for="gsHeadcount">Roughly how many people are in the building?</label>
-              <input class="fld" type="text" id="gsHeadcount" name="headcount" placeholder="Optional &mdash; a ballpark is fine">
-            </div>
-          </fieldset>
-
-          <!-- RESIDENTIAL -->
-          <fieldset class="aud-group aud-residential aud-hidden">
-            <legend class="aud-group-legend" hidden style="font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: #C79862; font-weight: 500; padding: 28px 0 4px;">If you&rsquo;re a building</legend>
-            <div style="margin-top: 20px;">
-              <label class="lbl" for="gsBuilding">Which building?</label>
-              <input class="fld" type="text" id="gsBuilding" name="building" placeholder="Property or community name">
-            </div>
-          </fieldset>
-
-          <!-- INDIVIDUAL -->
-          <fieldset class="aud-group aud-individual aud-hidden">
-            <legend class="aud-group-legend" hidden style="font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: #C79862; font-weight: 500; padding: 28px 0 4px;">If it&rsquo;s just about you</legend>
-            <div style="margin-top: 20px;">
-              <label class="lbl" for="gsStartingPoint">Where are you starting from?</label>
-              <select class="fld" id="gsStartingPoint" name="starting_point">
-                <option>Starting over after a long break</option>
-                <option>Training on and off, no real plan</option>
-                <option>Training consistently, want it to go further</option>
-              </select>
-            </div>
-            <div style="margin-top: 22px;">
-              <span class="lbl" style="margin-bottom: 12px;">What are you after? Pick any.</span>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px 20px;">
-                <label style="display: flex; gap: 10px; align-items: center; font-size: 14.5px; color: rgba(242,235,224,0.78); cursor: pointer;"><input type="checkbox" name="goals" value="Get stronger" style="width: 16px; height: 16px; accent-color: #B4834F;"> Get stronger</label>
-                <label style="display: flex; gap: 10px; align-items: center; font-size: 14.5px; color: rgba(242,235,224,0.78); cursor: pointer;"><input type="checkbox" name="goals" value="Move without pain" style="width: 16px; height: 16px; accent-color: #B4834F;"> Move without pain</label>
-                <label style="display: flex; gap: 10px; align-items: center; font-size: 14.5px; color: rgba(242,235,224,0.78); cursor: pointer;"><input type="checkbox" name="goals" value="Train for something specific" style="width: 16px; height: 16px; accent-color: #B4834F;"> Train for something specific</label>
-                <label style="display: flex; gap: 10px; align-items: center; font-size: 14.5px; color: rgba(242,235,224,0.78); cursor: pointer;"><input type="checkbox" name="goals" value="Sleep and energy" style="width: 16px; height: 16px; accent-color: #B4834F;"> Sleep and energy</label>
-                <label style="display: flex; gap: 10px; align-items: center; font-size: 14.5px; color: rgba(242,235,224,0.78); cursor: pointer;"><input type="checkbox" name="goals" value="Body composition" style="width: 16px; height: 16px; accent-color: #B4834F;"> Body composition</label>
-                <label style="display: flex; gap: 10px; align-items: center; font-size: 14.5px; color: rgba(242,235,224,0.78); cursor: pointer;"><input type="checkbox" name="goals" value="Something else" style="width: 16px; height: 16px; accent-color: #B4834F;"> Something else</label>
-              </div>
-            </div>
-          </fieldset>
-
-          <div style="margin-top: 22px;">
-            <label class="lbl" for="gsMessage"><span class="open-label aud-corporate">What made you look into this now?</span><span class="open-label aud-residential aud-hidden">What made you look into this now?</span><span class="open-label aud-individual aud-hidden">What&rsquo;s gotten in the way before?</span></label>
-            <textarea class="fld" id="gsMessage" name="message" rows="4" placeholder="Optional &mdash; but this is the part I read first." style="resize: vertical; line-height: 1.6;"></textarea>
-          </div>
-
-          <div class="gs-submit-row" style="display: flex; align-items: center; gap: 24px; margin-top: 40px; flex-wrap: wrap;">
-            <button type="submit" class="cta-solid" style="font: inherit; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; border: none; padding: 20px 52px; cursor: pointer;"><span class="submit-label aud-corporate">Book a walkthrough</span><span class="submit-label aud-residential aud-hidden">Start the conversation</span><span class="submit-label aud-individual aud-hidden">Book a consultation</span></button>
-            <div style="font-size: 14px; font-weight: 300; color: rgba(242,235,224,0.68);">Or email me directly at <a href="mailto:hello@konfideinone.com" class="link-accent" style="border-bottom: 1px solid rgba(180,131,79,0.6);">hello<!-- -->&#64;<!-- -->konfideinone&#46;com</a></div>
-          </div>
-
-          <!-- shown only when JS is unavailable, since the submit is JS-driven -->
-          <div class="gs-noscript" style="display: none; margin-top: 40px; border-left: 2px solid rgba(180,131,79,0.5); padding-left: 16px; font-size: 15px; line-height: 1.75; color: rgba(242,235,224,0.75);">Sending this form needs JavaScript. Email me at <a href="mailto:hello@konfideinone.com" class="link-accent">hello<!-- -->&#64;<!-- -->konfideinone&#46;com</a> or call <a href="tel:+15125550142" class="link-accent">(512) 555-0142</a> and we&rsquo;ll set up the same fifteen minutes.</div>
+        <div class="ghl-form-panel aud-corporate">
+          <iframe
+              src="https://link.msgsndr.com/widget/form/4yNMK1vBz3D7VxPrR3Ef"
+              style="width:100%;height:716px;border:none;border-radius:8px"
+              id="inline-4yNMK1vBz3D7VxPrR3Ef"
+              data-layout="{'id':'INLINE'}"
+              data-trigger-type="alwaysShow"
+              data-trigger-value=""
+              data-activation-type="alwaysActivated"
+              data-activation-value=""
+              data-deactivation-type="neverDeactivate"
+              data-deactivation-value=""
+              data-form-name="Corporate"
+              data-height="716"
+              data-layout-iframe-id="inline-4yNMK1vBz3D7VxPrR3Ef"
+              data-form-id="4yNMK1vBz3D7VxPrR3Ef"
+              data-cookie-consent="true"
+              data-cookie-consent-provider="auto"
+              title="Corporate">
+          </iframe>
         </div>
-      </form>
+
+        <div class="ghl-form-panel aud-residential aud-hidden">
+          <iframe
+              src="https://link.msgsndr.com/widget/form/GfYD2F2w6eR4PhaVsNoY"
+              style="width:100%;height:736px;border:none;border-radius:8px"
+              id="inline-GfYD2F2w6eR4PhaVsNoY"
+              data-layout="{'id':'INLINE'}"
+              data-trigger-type="alwaysShow"
+              data-trigger-value=""
+              data-activation-type="alwaysActivated"
+              data-activation-value=""
+              data-deactivation-type="neverDeactivate"
+              data-deactivation-value=""
+              data-form-name="Residential"
+              data-height="736"
+              data-layout-iframe-id="inline-GfYD2F2w6eR4PhaVsNoY"
+              data-form-id="GfYD2F2w6eR4PhaVsNoY"
+              data-cookie-consent="true"
+              data-cookie-consent-provider="auto"
+              title="Residential">
+          </iframe>
+        </div>
+
+        <div class="ghl-form-panel aud-individual aud-hidden">
+          <iframe
+              src="https://link.msgsndr.com/widget/form/jh5aDLbw6aVS7AKpiRPm"
+              style="width:100%;height:849px;border:none;border-radius:8px"
+              id="inline-jh5aDLbw6aVS7AKpiRPm"
+              data-layout="{'id':'INLINE'}"
+              data-trigger-type="alwaysShow"
+              data-trigger-value=""
+              data-activation-type="alwaysActivated"
+              data-activation-value=""
+              data-deactivation-type="neverDeactivate"
+              data-deactivation-value=""
+              data-form-name="Individual"
+              data-height="849"
+              data-layout-iframe-id="inline-jh5aDLbw6aVS7AKpiRPm"
+              data-form-id="jh5aDLbw6aVS7AKpiRPm"
+              data-cookie-consent="true"
+              data-cookie-consent-provider="auto"
+              title="Individual">
+          </iframe>
+        </div>
+        <script src="https://link.msgsndr.com/js/form_embed.js"></script>
 
     </div>
   </div>
@@ -406,9 +353,7 @@
 (function () {
   var AUDIENCES = ['corporate', 'residential', 'individual'];
 
-  /* ---- audience switch ----
-     Only ever adds the hiding class, never removes an inline display, and
-     disables the fields it hides so a hidden branch is never submitted. */
+  /* ---- audience switch ---- */
   function setAudience(aud) {
     if (AUDIENCES.indexOf(aud) === -1) aud = 'corporate';
 
@@ -416,7 +361,6 @@
     for (var i = 0; i < blocks.length; i++) {
       var on = blocks[i].classList.contains('aud-' + aud);
       blocks[i].classList.toggle('aud-hidden', !on);
-      if (blocks[i].tagName === 'FIELDSET') blocks[i].disabled = !on;
     }
 
     var btns = document.querySelectorAll('.aud-btn');
@@ -426,8 +370,6 @@
       btns[j].setAttribute('aria-pressed', active ? 'true' : 'false');
     }
 
-    var hidden = document.getElementById('gsAudience');
-    if (hidden) hidden.value = aud;
     try { history.replaceState(null, '', '#' + aud); } catch (e) {}
   }
 
@@ -446,73 +388,8 @@
     setAudience(AUDIENCES.indexOf(hash) > -1 ? hash : 'corporate');
   }
 
-  /* ---- submit ----
-     `novalidate` is on the form so we can style the invalid state ourselves,
-     which means we have to ask for the check explicitly. Submission itself
-     goes out as JSON via fetch so checkbox groups (goals) serialize as an
-     array instead of a repeated form field. */
-  function initForm() {
-    var form = document.getElementById('gsForm');
-    var thanks = document.getElementById('gsThanks');
-    if (!form) return;
-
-    function formToJSON(f) {
-      var data = {};
-      var fields = f.querySelectorAll('input, textarea, select');
-      for (var i = 0; i < fields.length; i++) {
-        var el = fields[i];
-        if (!el.name || el.disabled) continue;
-        if (el.type === 'checkbox') {
-          if (!el.checked) continue;
-          if (data[el.name] === undefined) data[el.name] = [];
-          data[el.name].push(el.value);
-        } else if (el.type === 'radio') {
-          if (el.checked) data[el.name] = el.value;
-        } else {
-          data[el.name] = el.value;
-        }
-      }
-      return data;
-    }
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      form.classList.add('was-submitted');
-      if (typeof form.checkValidity === 'function' && !form.checkValidity()) {
-        /* scoped to controls: bare :invalid would also match the wrapping
-           fieldset, which can't take focus */
-        var bad = form.querySelector('input:invalid, select:invalid, textarea:invalid');
-        if (bad) {
-          bad.focus();
-          bad.scrollIntoView({ block: 'center' });
-        }
-        return;
-      }
-
-      var submitBtn = form.querySelector('button[type="submit"]');
-      if (submitBtn) submitBtn.disabled = true;
-
-      fetch(form.getAttribute('action'), {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formToJSON(form))
-      }).then(function (res) {
-        if (!res.ok) throw new Error('Request failed');
-        if (thanks) {
-          form.hidden = true;
-          thanks.hidden = false;
-          thanks.scrollIntoView({ block: 'center' });
-        }
-      }).catch(function () {
-        if (submitBtn) submitBtn.disabled = false;
-        alert('Something went wrong sending this — please email hello@konfideinone.com directly.');
-      });
-    });
-  }
-
   function init() {
     initAudience();
-    initForm();
   }
   if (document.readyState !== 'loading') init();
   else document.addEventListener('DOMContentLoaded', init);
