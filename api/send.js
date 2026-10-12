@@ -2,8 +2,8 @@ const { Resend } = require('resend');
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const FROM = 'Konfide In One <hello@konfideinone.com>';
-const TO = 'hello@konfideinone.com';
+const FROM = 'Konfide In One <info@konfideinone.com>';
+const TO = 'info@konfideinone.com';
 
 function esc(v) {
   return String(v || '').replace(/[&<>"']/g, function (c) {

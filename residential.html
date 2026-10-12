@@ -87,9 +87,6 @@
     .pillar-tab.is-active { background: #B4834F; border-color: #B4834F; color: #17120F; }
     .pillar-panel { display: none; }
     .pillar-panel.is-active { display: grid; }
-    .pillar-video-play:focus-visible { outline: 2px solid #C79862; outline-offset: 3px; }
-    .pillar-video-play span { transition: transform 0.25s ease; }
-    .pillar-video-play:hover span, .pillar-video-play:focus-visible span { transform: scale(1.08); }
 
     /* ===== responsive: preserved from the previous build, extended for the new type scale ===== */
     @media (max-width: 1024px) {
@@ -218,7 +215,7 @@
     </video>
     <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(23,18,15,0.72) 0%, rgba(23,18,15,0.22) 38%, rgba(23,18,15,0.94) 100%);"></div>
 
-    <div class="hero-content" style="position: absolute; left: 72px; right: 72px; bottom: 82px; z-index: 10;">
+    <div class="hero-content" style="z-index: 10;">
       <div style="font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase; color: #C79862; margin-bottom: 24px; font-weight: 500; animation: fadeUp 0.9s ease both;">For properties &amp; residents</div>
       <h1 class="fr" style="font-size: 98px; line-height: 0.96; font-weight: 400; letter-spacing: -0.022em; max-width: 1040px; animation: fadeUp 1s ease 0.1s both;">The best gym in the city is the one two floors down.</h1>
       <div style="font-size: 20px; line-height: 1.62; font-weight: 300; color: rgba(242,235,224,0.85); max-width: 620px; margin-top: 28px; animation: fadeUp 1s ease 0.2s both;">Your coach is already in the building. No drive, no membership you forget you have &mdash; just someone waiting for you at 6:40, who knows your name.</div>
@@ -382,12 +379,9 @@
 
     <!-- ===== resident panels ===== -->
     <div class="pillar-panel is-active aud-resident" id="panel-resident-train" role="tabpanel" style="grid-template-columns: 1.15fr 1fr; background: #1C1611; border: 1px solid rgba(180,131,79,0.22); min-height: 480px;">
-      <div class="pillar-video" data-video-src="videos/pilar-train.mp4" style="position: relative; overflow: hidden; background: #100C0A;">
+      <div class="pillar-video" style="position: relative; overflow: hidden; background: #100C0A;">
         <img src="images/ChanCL-5.webp" alt="A one-on-one session in a residence gym" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
         <div style="position: absolute; inset: 0; background: rgba(23,18,15,0.34);"></div>
-        <button type="button" class="pillar-video-play" aria-label="Play the Train video" style="position: absolute; inset: 0; width: 100%; height: 100%; background: transparent; border: 0; cursor: pointer; display: flex; align-items: flex-end; justify-content: flex-start; padding: 32px;">
-          <span style="width: 60px; height: 60px; border-radius: 50%; background: #B4834F; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(0,0,0,0.35);"><span style="width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 16px solid #17120F; margin-left: 4px;"></span></span>
-        </button>
       </div>
       <div style="padding: 64px 60px; display: flex; flex-direction: column; justify-content: center; gap: 22px;">
         <div style="font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: #C79862; font-weight: 500;">Coaching</div>
@@ -401,12 +395,9 @@
     </div>
 
     <div class="pillar-panel aud-resident" id="panel-resident-fuel" role="tabpanel" style="grid-template-columns: 1.15fr 1fr; background: #1C1611; border: 1px solid rgba(180,131,79,0.22); min-height: 480px;">
-      <div class="pillar-video" data-video-src="videos/pilar-fuel.mp4" style="position: relative; overflow: hidden; background: #100C0A;">
+      <div class="pillar-video" style="position: relative; overflow: hidden; background: #100C0A;">
         <img src="images/ChanCL-59.webp" alt="A nutrition and training check-in during an on-site session" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;" loading="lazy">
         <div style="position: absolute; inset: 0; background: rgba(23,18,15,0.34);"></div>
-        <button type="button" class="pillar-video-play" aria-label="Play the Fuel video" style="position: absolute; inset: 0; width: 100%; height: 100%; background: transparent; border: 0; cursor: pointer; display: flex; align-items: flex-end; justify-content: flex-start; padding: 32px;">
-          <span style="width: 60px; height: 60px; border-radius: 50%; background: #B4834F; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(0,0,0,0.35);"><span style="width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 16px solid #17120F; margin-left: 4px;"></span></span>
-        </button>
       </div>
       <div style="padding: 64px 60px; display: flex; flex-direction: column; justify-content: center; gap: 22px;">
         <div style="font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: #C79862; font-weight: 500;">Nutrition</div>
@@ -420,12 +411,9 @@
     </div>
 
     <div class="pillar-panel aud-resident" id="panel-resident-restore" role="tabpanel" style="grid-template-columns: 1.15fr 1fr; background: #1C1611; border: 1px solid rgba(180,131,79,0.22); min-height: 480px;">
-      <div class="pillar-video" data-video-src="videos/pilar-restore.mp4" style="position: relative; overflow: hidden; background: #100C0A;">
+      <div class="pillar-video" style="position: relative; overflow: hidden; background: #100C0A;">
         <img src="images/ChanCL-71.webp" alt="Hands-on recovery work in a quiet on-site room" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;" loading="lazy">
         <div style="position: absolute; inset: 0; background: rgba(23,18,15,0.34);"></div>
-        <button type="button" class="pillar-video-play" aria-label="Play the Restore video" style="position: absolute; inset: 0; width: 100%; height: 100%; background: transparent; border: 0; cursor: pointer; display: flex; align-items: flex-end; justify-content: flex-start; padding: 32px;">
-          <span style="width: 60px; height: 60px; border-radius: 50%; background: #B4834F; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(0,0,0,0.35);"><span style="width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 16px solid #17120F; margin-left: 4px;"></span></span>
-        </button>
       </div>
       <div style="padding: 64px 60px; display: flex; flex-direction: column; justify-content: center; gap: 22px;">
         <div style="font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: #C79862; font-weight: 500;">Recovery</div>
@@ -439,12 +427,9 @@
     </div>
 
     <div class="pillar-panel aud-resident" id="panel-resident-measure" role="tabpanel" style="grid-template-columns: 1.15fr 1fr; background: #1C1611; border: 1px solid rgba(180,131,79,0.22); min-height: 480px;">
-      <div class="pillar-video" data-video-src="videos/pilar-measure.mp4" style="position: relative; overflow: hidden; background: #100C0A;">
+      <div class="pillar-video" style="position: relative; overflow: hidden; background: #100C0A;">
         <img src="images/ChanCL-38.webp" alt="A tracked session in a residence gym with floor-to-ceiling windows" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;" loading="lazy">
         <div style="position: absolute; inset: 0; background: rgba(23,18,15,0.34);"></div>
-        <button type="button" class="pillar-video-play" aria-label="Play the Measure video" style="position: absolute; inset: 0; width: 100%; height: 100%; background: transparent; border: 0; cursor: pointer; display: flex; align-items: flex-end; justify-content: flex-start; padding: 32px;">
-          <span style="width: 60px; height: 60px; border-radius: 50%; background: #B4834F; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(0,0,0,0.35);"><span style="width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 16px solid #17120F; margin-left: 4px;"></span></span>
-        </button>
       </div>
       <div style="padding: 64px 60px; display: flex; flex-direction: column; justify-content: center; gap: 22px;">
         <div style="font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: #C79862; font-weight: 500;">Progress</div>
@@ -459,12 +444,9 @@
 
     <!-- ===== property-manager panels ===== -->
     <div class="pillar-panel is-active aud-property" id="panel-property-train" role="tabpanel" style="grid-template-columns: 1.15fr 1fr; background: #1C1611; border: 1px solid rgba(180,131,79,0.22); min-height: 480px;">
-      <div class="pillar-video" data-video-src="videos/pilar-train.mp4" style="position: relative; overflow: hidden; background: #100C0A;">
+      <div class="pillar-video" style="position: relative; overflow: hidden; background: #100C0A;">
         <img src="images/ChanCL-4.webp" alt="Residents training on the building gym floor with a coach" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;" loading="lazy">
         <div style="position: absolute; inset: 0; background: rgba(23,18,15,0.34);"></div>
-        <button type="button" class="pillar-video-play" aria-label="Play the Train video" style="position: absolute; inset: 0; width: 100%; height: 100%; background: transparent; border: 0; cursor: pointer; display: flex; align-items: flex-end; justify-content: flex-start; padding: 32px;">
-          <span style="width: 60px; height: 60px; border-radius: 50%; background: #B4834F; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(0,0,0,0.35);"><span style="width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 16px solid #17120F; margin-left: 4px;"></span></span>
-        </button>
       </div>
       <div style="padding: 64px 60px; display: flex; flex-direction: column; justify-content: center; gap: 22px;">
         <div style="font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: #C79862; font-weight: 500;">Coaching</div>
@@ -478,12 +460,9 @@
     </div>
 
     <div class="pillar-panel aud-property" id="panel-property-fuel" role="tabpanel" style="grid-template-columns: 1.15fr 1fr; background: #1C1611; border: 1px solid rgba(180,131,79,0.22); min-height: 480px;">
-      <div class="pillar-video" data-video-src="videos/pilar-fuel.mp4" style="position: relative; overflow: hidden; background: #100C0A;">
+      <div class="pillar-video" style="position: relative; overflow: hidden; background: #100C0A;">
         <img src="images/ChanCL-51.webp" alt="An on-site nutrition session in a residence common area" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;" loading="lazy">
         <div style="position: absolute; inset: 0; background: rgba(23,18,15,0.34);"></div>
-        <button type="button" class="pillar-video-play" aria-label="Play the Fuel video" style="position: absolute; inset: 0; width: 100%; height: 100%; background: transparent; border: 0; cursor: pointer; display: flex; align-items: flex-end; justify-content: flex-start; padding: 32px;">
-          <span style="width: 60px; height: 60px; border-radius: 50%; background: #B4834F; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(0,0,0,0.35);"><span style="width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 16px solid #17120F; margin-left: 4px;"></span></span>
-        </button>
       </div>
       <div style="padding: 64px 60px; display: flex; flex-direction: column; justify-content: center; gap: 22px;">
         <div style="font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: #C79862; font-weight: 500;">Nutrition</div>
@@ -497,12 +476,9 @@
     </div>
 
     <div class="pillar-panel aud-property" id="panel-property-restore" role="tabpanel" style="grid-template-columns: 1.15fr 1fr; background: #1C1611; border: 1px solid rgba(180,131,79,0.22); min-height: 480px;">
-      <div class="pillar-video" data-video-src="videos/pilar-restore.mp4" style="position: relative; overflow: hidden; background: #100C0A;">
+      <div class="pillar-video" style="position: relative; overflow: hidden; background: #100C0A;">
         <img src="images/ChanCL-65.webp" alt="An on-site recovery session in a calm, private room" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;" loading="lazy">
         <div style="position: absolute; inset: 0; background: rgba(23,18,15,0.34);"></div>
-        <button type="button" class="pillar-video-play" aria-label="Play the Restore video" style="position: absolute; inset: 0; width: 100%; height: 100%; background: transparent; border: 0; cursor: pointer; display: flex; align-items: flex-end; justify-content: flex-start; padding: 32px;">
-          <span style="width: 60px; height: 60px; border-radius: 50%; background: #B4834F; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(0,0,0,0.35);"><span style="width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 16px solid #17120F; margin-left: 4px;"></span></span>
-        </button>
       </div>
       <div style="padding: 64px 60px; display: flex; flex-direction: column; justify-content: center; gap: 22px;">
         <div style="font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: #C79862; font-weight: 500;">Recovery</div>
@@ -516,12 +492,9 @@
     </div>
 
     <div class="pillar-panel aud-property" id="panel-property-measure" role="tabpanel" style="grid-template-columns: 1.15fr 1fr; background: #1C1611; border: 1px solid rgba(180,131,79,0.22); min-height: 480px;">
-      <div class="pillar-video" data-video-src="videos/pilar-measure.mp4" style="position: relative; overflow: hidden; background: #100C0A;">
+      <div class="pillar-video" style="position: relative; overflow: hidden; background: #100C0A;">
         <img src="images/ChanCL-72.webp" alt="A resident working through a tracked progression with her coach" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;" loading="lazy">
         <div style="position: absolute; inset: 0; background: rgba(23,18,15,0.34);"></div>
-        <button type="button" class="pillar-video-play" aria-label="Play the Measure video" style="position: absolute; inset: 0; width: 100%; height: 100%; background: transparent; border: 0; cursor: pointer; display: flex; align-items: flex-end; justify-content: flex-start; padding: 32px;">
-          <span style="width: 60px; height: 60px; border-radius: 50%; background: #B4834F; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(0,0,0,0.35);"><span style="width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 16px solid #17120F; margin-left: 4px;"></span></span>
-        </button>
       </div>
       <div style="padding: 64px 60px; display: flex; flex-direction: column; justify-content: center; gap: 22px;">
         <div style="font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: #C79862; font-weight: 500;">Reporting</div>
@@ -647,17 +620,17 @@
   <div role="contentinfo" style="background: #14100D; border-top: 1px solid rgba(242,235,224,0.08); padding: 138px 72px 0;">
     <div class="aud-resident" style="text-align: center; display: flex; flex-direction: column; align-items: center; gap: 26px;">
       <div style="font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: #C79862; font-weight: 500;">One conversation</div>
-      <h2 class="fr" style="font-size: 72px; line-height: 1.02; font-weight: 400; letter-spacing: -0.025em; max-width: 880px;">Come tell me where you actually are.</h2>
-      <div style="font-size: 18px; line-height: 1.66; font-weight: 300; color: rgba(242,235,224,0.72); max-width: 540px;">Fifteen minutes with me, in your building. No forms first, no program to buy. Just where you are, where you want to be, and whether we&rsquo;re the right team to get you there.</div>
+      <h2 class="fr" style="font-size: 72px; line-height: 1.02; font-weight: 400; letter-spacing: -0.025em; max-width: 880px;">Come tell us where you actually are.</h2>
+      <div style="font-size: 18px; line-height: 1.66; font-weight: 300; color: rgba(242,235,224,0.72); max-width: 540px;">Fifteen minutes with us, in your building. No forms first, no program to buy. Just where you are, where you want to be, and whether we&rsquo;re the right team to get you there.</div>
       <a href="get-started.html#individual" class="cta-solid" style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; padding: 21px 52px; margin-top: 12px;">Book a consultation</a>
-      <div class="fr" style="font-size: 20px; font-style: italic; color: rgba(242,235,224,0.6); margin-top: 6px;">&mdash; Chandler</div>
+      <div class="fr" style="font-size: 20px; font-style: italic; color: rgba(242,235,224,0.6); margin-top: 6px;">&mdash; Konfide In One</div>
     </div>
     <div class="aud-property" style="text-align: center; display: flex; flex-direction: column; align-items: center; gap: 26px;">
       <div style="font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: #C79862; font-weight: 500;">See it in your own building</div>
-      <h2 class="fr" style="font-size: 72px; line-height: 1.02; font-weight: 400; letter-spacing: -0.025em; max-width: 880px;">Let me walk your space with you.</h2>
-      <div style="font-size: 18px; line-height: 1.66; font-weight: 300; color: rgba(242,235,224,0.72); max-width: 540px;">Thirty minutes, on site. I&rsquo;ll tell you honestly what your space can support and what your residents will actually use &mdash; whether or not you bring us in.</div>
+      <h2 class="fr" style="font-size: 72px; line-height: 1.02; font-weight: 400; letter-spacing: -0.025em; max-width: 880px;">Let us walk your space with you.</h2>
+      <div style="font-size: 18px; line-height: 1.66; font-weight: 300; color: rgba(242,235,224,0.72); max-width: 540px;">Thirty minutes, on site. We&rsquo;ll tell you honestly what your space can support and what your residents will actually use &mdash; whether or not you bring us in.</div>
       <a href="get-started.html#residential" class="cta-solid" style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; padding: 21px 52px; margin-top: 12px;">Book a walkthrough</a>
-      <div class="fr" style="font-size: 20px; font-style: italic; color: rgba(242,235,224,0.6); margin-top: 6px;">&mdash; Chandler</div>
+      <div class="fr" style="font-size: 20px; font-style: italic; color: rgba(242,235,224,0.6); margin-top: 6px;">&mdash; Konfide In One</div>
     </div>
 
     <div style="display: flex; flex-direction: column; margin-top: 128px; padding-top: 40px; border-top: 1px solid rgba(242,235,224,0.08); font-size: 12px; letter-spacing: 0.04em; color: rgba(242,235,224,0.7); gap: 32px; padding-bottom: 56px;">
@@ -673,7 +646,7 @@
           <div style="line-height: 1.7; font-size: 15px; color: rgba(242,235,224,0.78);">
             <div>100 Congress Ave, Suite 200</div>
             <div>Austin, TX 78701, United States</div>
-            <div><a href="tel:+15125550142">(512) 555-0142</a> &middot; <a href="mailto:hello@konfideinone.com">hello<!-- -->&#64;<!-- -->konfideinone&#46;com</a></div>
+            <div><a href="tel:+15125550142">(512) 555-0142</a> &middot; <a href="mailto:info@konfideinone.com">info@konfideinone.com</a></div>
           </div>
         </div>
         <div style="display: flex; flex-direction: column; gap: 8px; align-items: flex-end;">
@@ -742,34 +715,6 @@
     }
   }
 
-  /* ---- click-to-play pillar videos (same behaviour as the Ecosystem page).
-         If the footage isn't uploaded yet the poster is restored instead of
-         leaving a broken player on the page. ---- */
-  function bindPillarVideo(wrap) {
-    var btn = wrap.querySelector('.pillar-video-play');
-    if (!btn) return;
-    btn.addEventListener('click', function () {
-      var poster = wrap.innerHTML;
-      var video = document.createElement('video');
-      video.src = wrap.getAttribute('data-video-src');
-      video.controls = true;
-      video.autoplay = true;
-      video.playsInline = true;
-      video.style.cssText = 'position:absolute; inset:0; width:100%; height:100%; object-fit:cover;';
-      video.addEventListener('error', function () {
-        wrap.innerHTML = poster;
-        bindPillarVideo(wrap);
-      });
-      wrap.innerHTML = '';
-      wrap.appendChild(video);
-      video.play().catch(function () {});
-    });
-  }
-  function initPillarVideos() {
-    var wraps = document.querySelectorAll('.pillar-video');
-    for (var i = 0; i < wraps.length; i++) bindPillarVideo(wraps[i]);
-  }
-
   /* ---- hero video: some browsers ignore the autoplay attribute ---- */
   function initHeroVideo() {
     var v = document.getElementById('heroVideo');
@@ -806,7 +751,7 @@
       "name": "Konfide In One",
       "url": "https://konfideinone.com/",
       "telephone": "+1-512-555-0142",
-      "email": "hello@konfideinone.com",
+      "email": "info@konfideinone.com",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "100 Congress Ave, Suite 200",
