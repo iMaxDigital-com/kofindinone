@@ -16,6 +16,12 @@
     menu.className = 'mobile-menu';
     menu.setAttribute('aria-label', 'Site navigation');
     menu.innerHTML = '<div class="menu-inner"><div class="menu-top"><a href="index.html" class="menu-brand"><img src="images/kn1-badge.webp" width="31" height="40" alt=""><span class="fr">Konfide In One</span></a><button type="button" class="menu-close" aria-label="Close navigation">&times;</button></div><nav class="menu-links" aria-label="Mobile navigation"><a href="index.html">Home</a><a href="corporate.html">Corporate</a><a href="residential.html">Residential</a><a href="ecosystem.html">Ecosystem</a><a href="mission.html">Mission</a></nav><div class="menu-contact"><span>Konfide In One &middot; Austin, TX</span><a href="mailto:info@konfideinone.com">info@konfideinone.com</a><a href="tel:+15125550142">(512) 555-0142</a></div><a class="cta-solid menu-cta" href="get-started.html">Get Started &rarr;</a></div>';
+    if (nav.hasAttribute('data-clean-urls')) {
+      menu.querySelectorAll('a[href$=".html"]').forEach(function (link) {
+        var page = link.getAttribute('href').replace(/\.html$/, '');
+        link.setAttribute('href', page === 'index' ? '/' : '/' + page);
+      });
+    }
     document.body.appendChild(menu);
     menu.querySelectorAll('a').forEach(function (link) {
       if (link.getAttribute('href') === location.pathname.split('/').pop()) link.setAttribute('aria-current', 'page');
